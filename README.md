@@ -2,7 +2,6 @@
 
 This README explains how to set up and run the **AI Story Weave** game
 on your local machine.\
-It is based on the documentation you provided. fileciteturn0file0
 
 ------------------------------------------------------------------------
 
