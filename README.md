@@ -1,89 +1,84 @@
-AI Story Weave - Local Setup Instructions
-This guide will walk you through setting up and running the AI Story Weave game on your local machine.
+# AI Story Weave --- Local Setup Guide
 
-Prerequisites
-Node.js and npm: You must have Node.js (which includes npm) installed. You can download it from nodejs.org.
+This README explains how to set up and run the **AI Story Weave** game
+on your local machine.\
+It is based on the documentation you provided. fileciteturn0file0
 
-Firebase Project: You need a Firebase project to handle the database and authentication.
+------------------------------------------------------------------------
 
-Go to the Firebase Console.
+## 🚀 Prerequisites
 
-Click "Add project" and follow the steps to create a new project.
+Before starting, make sure you have:
 
-Once your project is created, go to Project Settings (click the gear icon).
+### **1. Node.js + npm**
 
-In the "General" tab, scroll down to "Your apps".
+Download and install from: https://nodejs.org/
 
-Click the web icon (</>) to create a new web app.
+### **2. A Firebase Project**
 
-Give it a nickname (e.g., "AI Story Weave App") and register the app.
+Used for authentication and Firestore database. 1. Visit Firebase
+Console. 2. Create a new project. 3. Go to **Project Settings → General
+→ Your Apps**. 4. Register a **Web App** and copy the `firebaseConfig`
+object. 5. Enable: - **Authentication → Anonymous Sign‑in** -
+**Firestore Database → Test Mode**
 
-After registering, Firebase will show you a firebaseConfig object. Copy this object. You will need it soon.
+### **3. A Gemini API Key**
 
-Enable Firebase Services:
+Used for AI story generation. - Visit **Google AI Studio** - Create and
+copy an API key
 
-In your Firebase project, go to the Authentication section. Click "Get started" and enable the Anonymous sign-in provider.
+------------------------------------------------------------------------
 
-Go to the Firestore Database section. Click "Create database", start in test mode for easy setup (you can secure it later), and choose a location.
+## 📁 Project Setup
 
-Enable Gemini API:
+### **1. Create Project Folder**
 
-Go to Google AI Studio.
-
-Click "Get API key" and create a new API key. Copy this key. You will need it for the AI to work.
-
-Step-by-Step Setup
-1. Create Project Folder
-
-Create a new folder for your project and navigate into it using your terminal:
-
+``` bash
 mkdir ai-story-weave
 cd ai-story-weave
+```
 
-2. Create package.json
+### **2. Create `package.json`**
 
-Create a file named package.json in the root of your project folder and paste the following content into it. This file defines the project's dependencies.
+Paste the provided package.json content into a new file called
+`package.json`.
 
-(See the package.json file in the next artifact).
+### **3. Install Dependencies**
 
-3. Install Dependencies
-
-Once package.json is created, run the following command in your terminal to install all the necessary libraries:
-
+``` bash
 npm install
+```
 
-4. Create Project Structure
+### **4. Create the Project Structure**
 
-Create the following folder and file structure inside your ai-story-weave folder:
+    ai-story-weave/
+    ├── public/
+    │   └── index.html
+    ├── src/
+    │   ├── App.js
+    │   ├── index.css
+    │   └── index.js
+    └── package.json
 
-ai-story-weave/
-├── public/
-│   └── index.html
-├── src/
-│   ├── App.js
-│   ├── index.css
-│   └── index.js
-└── package.json
+### **5. Add Code Files**
 
-5. Populate the Files
+Copy the appropriate code into:
 
-Copy the code from the artifacts I'm providing into the corresponding files:
+-   `public/index.html`
+-   `src/index.css`
+-   `src/index.js`
+-   `src/App.js`
 
-public/index.html
+------------------------------------------------------------------------
 
-src/index.css
+## 🔧 Configuration
 
-src/index.js
+### **1. Firebase Configuration**
 
-src/App.js
+In `src/App.js`, replace the placeholder config with your actual
+Firebase config:
 
-6. Configure Firebase and Gemini
-
-Open the src/App.js file. You will need to make two important changes:
-
-Firebase Config: Find the firebaseConfig object near the top of the file and replace the placeholder values with the actual config object you copied from your Firebase project.
-
-// --- Firebase Configuration ---
+``` js
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY_FROM_FIREBASE",
   authDomain: "YOUR_AUTH_DOMAIN",
@@ -92,18 +87,40 @@ const firebaseConfig = {
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
   appId: "YOUR_APP_ID"
 };
+```
 
-Gemini API Key: Find the triggerAITurn function. Inside it, locate the apiKeyGen constant and paste your Google AI API key there.
+### **2. Gemini API Key**
 
-//... inside triggerAITurn function
-const apiKeyGen = "YOUR_GEMINI_API_KEY"; // <-- PASTE YOUR KEY HERE
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKeyGen}`;
-//...
+Inside the `triggerAITurn` function in `App.js`, replace:
 
-7. Run the Application
+``` js
+const apiKeyGen = "YOUR_GEMINI_API_KEY";
+```
 
-After completing all the steps, run the following command in your terminal from the project's root directory:
+with your actual key.
 
+------------------------------------------------------------------------
+
+## ▶️ Run the Application
+
+Start the development server:
+
+``` bash
 npm start
+```
 
-This will start the development server, and your browser should automatically open to http://localhost:3000, where you can see and play the game!
+Your browser should automatically open:
+
+    http://localhost:3000
+
+You are now ready to play **AI Story Weave**!
+
+------------------------------------------------------------------------
+
+## 📄 License
+
+This project is provided as-is based on user-supplied documentation.
+
+------------------------------------------------------------------------
+
+## 🙌 Enjoy building and storytelling!
